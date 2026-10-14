@@ -86,7 +86,7 @@ namespace Number.Core.Services
             if (!isValid) return "Không hợp lệ";
 
             string sign = input.StartsWith('-') ? "âm" : "dương";
-            string kind = finalState == State.q2 ? "Số nguyên" : "Số thực (thập phân)";
+            string kind = finalState == State.q2 ? "Số nguyên" : "Số thực";
             return $"{kind} {sign}";
         }
 
