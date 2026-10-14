@@ -10,11 +10,12 @@ public class AutomatonTests
 
     // ── Số nguyên hợp lệ ──────────────────────────────────────
     [Theory]
-    [InlineData("0",    "Số nguyên dương")]
+    [InlineData("0",    "Số nguyên bằng không")]
     [InlineData("123",  "Số nguyên dương")]
     [InlineData("+99",  "Số nguyên dương")]
     [InlineData("-456", "Số nguyên âm")]
-    [InlineData("-0",   "Số nguyên âm")]
+    [InlineData("-0",   "Số nguyên bằng không")]
+    [InlineData("+0",   "Số nguyên bằng không")]
     public void Integers_AreValid_WithCorrectType(string input, string expected)
     {
         var r = _engine.Analyze(input);
@@ -24,12 +25,15 @@ public class AutomatonTests
 
     // ── Số thực hợp lệ ────────────────────────────────────────
     [Theory]
-    [InlineData("1.23",  "Số thực (thập phân) dương")]
-    [InlineData("0.5",   "Số thực (thập phân) dương")]
-    [InlineData(".5",    "Số thực (thập phân) dương")]
-    [InlineData("+.5",   "Số thực (thập phân) dương")]
-    [InlineData("-.5",   "Số thực (thập phân) âm")]
-    [InlineData("-9.99", "Số thực (thập phân) âm")]
+    [InlineData("1.23",  "Số thực dương")]
+    [InlineData("0.5",   "Số thực dương")]
+    [InlineData(".5",    "Số thực dương")]
+    [InlineData("+.5",   "Số thực dương")]
+    [InlineData("-.5",   "Số thực âm")]
+    [InlineData("-9.99", "Số thực âm")]
+    [InlineData("0.0",   "Số thực bằng không")]
+    [InlineData("-0.0",  "Số thực bằng không")]
+    [InlineData("+.0",   "Số thực bằng không")]
     public void RealNumbers_AreValid_WithCorrectType(string input, string expected)
     {
         var r = _engine.Analyze(input);

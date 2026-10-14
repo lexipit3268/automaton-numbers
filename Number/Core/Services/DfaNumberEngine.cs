@@ -85,8 +85,11 @@ namespace Number.Core.Services
         {
             if (!isValid) return "Không hợp lệ";
 
-            string sign = input.StartsWith('-') ? "âm" : "dương";
             string kind = finalState == State.q2 ? "Số nguyên" : "Số thực";
+            bool isZero = input.All(c => c is '+' or '-' or '.' or '0');
+            string sign = isZero
+                ? "bằng không"
+                : input.StartsWith('-') ? "âm" : "dương";
             return $"{kind} {sign}";
         }
 
